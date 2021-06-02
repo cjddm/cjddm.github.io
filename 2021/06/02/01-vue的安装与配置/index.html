@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>测试二 | lyp</title>
+  <title>01-vue的安装与配置 | lyp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="sadasdjs关于我方进入大反击阶段的各项调查报告 扩大化就撒谎的空间撒谎的就把不断因为iu活动空间撒点">
+  <meta name="description" content="vue与vue-cli的安装与配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试二">
-<meta property="og:url" content="http://example.com/2021/06/02/%E6%B5%8B%E8%AF%95%E4%BA%8C/index.html">
+<meta property="og:title" content="01-vue的安装与配置">
+<meta property="og:url" content="http://example.com/2021/06/02/01-vue%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="lyp">
-<meta property="og:description" content="sadasdjs关于我方进入大反击阶段的各项调查报告 扩大化就撒谎的空间撒谎的就把不断因为iu活动空间撒点">
+<meta property="og:description" content="vue与vue-cli的安装与配置">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-02T05:57:42.000Z">
-<meta property="article:modified_time" content="2021-06-02T06:18:29.488Z">
+<meta property="article:published_time" content="2021-06-02T07:01:18.000Z">
+<meta property="article:modified_time" content="2021-06-02T07:06:55.663Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -73,10 +73,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-测试二" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-01-vue的安装与配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/06/02/%E6%B5%8B%E8%AF%95%E4%BA%8C/" class="article-date">
-  <time class="dt-published" datetime="2021-06-02T05:57:42.000Z" itemprop="datePublished">2021-06-02</time>
+    <a href="/2021/06/02/01-vue%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-06-02T07:01:18.000Z" itemprop="datePublished">2021-06-02</time>
 </a>
     
   </div>
@@ -87,7 +87,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      测试二
+      01-vue的安装与配置
     </h1>
   
 
@@ -95,13 +95,25 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>sadasdjs关于我方进入大反击阶段的各项调查报告</p>
-<p>扩大化就撒谎的空间撒谎的就把不断因为iu活动空间撒点</p>
+        <p>vue与vue-cli的安装与配置</p>
 <span id="more"></span>
+
+<h3 id="安装与配置vue"><a href="#安装与配置vue" class="headerlink" title="安装与配置vue"></a>安装与配置vue</h3><p>注意：这是单独安装vue，不安装脚手架，且下方的问题在脚手架中是不存在的</p>
+<h4 id="安装代码："><a href="#安装代码：" class="headerlink" title="安装代码："></a>安装代码：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue --save</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h4><p>在webpack.config.js文件中的module-rules(loader的配置)中写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        resolve: &#123;</span><br><span class="line">          alias: &#123;</span><br><span class="line">            &#x27;vue$&#x27;: &#x27;vue/dist/vue.esm.js&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>若是打包后浏览器报  Cannot find element ：#app 的错误</p>
+<p>是因为在html文件中把入口文件放在的需要渲染的vue代码前面了</p>
+<p>解决办法：把引入文件放到代码的最后</p>
+<h3 id="vue-cli的安装"><a href="#vue-cli的安装" class="headerlink" title="vue-cli的安装"></a>vue-cli的安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create 项目名称 </span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/02/%E6%B5%8B%E8%AF%95%E4%BA%8C/" data-id="ckpf4n39a0002r01n9s15a0mx" data-title="测试二" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/02/01-vue%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-id="ckpf4n3920000r01n57nyeyxw" data-title="01-vue的安装与配置" class="article-share-link">分享</a>
       
       
       
@@ -111,19 +123,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/06/02/01-vue%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前一篇</strong>
-      <div class="article-nav-title">
-        
-          01-vue的安装与配置
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/06/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/06/02/%E6%B5%8B%E8%AF%95%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">测试二</div>
     </a>
   
 </nav>
