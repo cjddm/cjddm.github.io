@@ -14,7 +14,7 @@
 <meta property="og:description" content="代码转路由跳转，动态路由，路由懒加载 前期简单了解">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-03T00:12:35.000Z">
-<meta property="article:modified_time" content="2021-06-03T00:50:11.514Z">
+<meta property="article:modified_time" content="2021-06-03T11:01:09.374Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -125,11 +125,16 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h3&gt;&#123;&#123;$route.params.userid&#125;&#125;&lt;/h3&gt;</span><br></pre></td></tr></table></figure>
 
 <p>$router指向的是当前活跃的路由(个人感觉可以理解为当该路由界面被点击打开时)</p>
+<h3 id="路由的懒加载"><a href="#路由的懒加载" class="headerlink" title="路由的懒加载"></a>路由的懒加载</h3><h5 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h5><p>当打包工具构建应用是，JavaScript包会变得非常大，影响页面加载。如果能把不同路由对应的组件分割成不同的代码块，然后当路由被访问的时候才加载对应组件，这样就更加高效了</p>
+<h5 id="简单理解：-1"><a href="#简单理解：-1" class="headerlink" title="简单理解："></a>简单理解：</h5><p>把代码分成不同的模块，当具体用的时候再加载对应的模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//原代码</span></span><br><span class="line"> <span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">&#x27;../views/Home.vue&#x27;</span></span><br><span class="line"> <span class="keyword">import</span> About <span class="keyword">from</span> <span class="string">&#x27;../views/About.vue&#x27;</span></span><br><span class="line"> <span class="keyword">import</span> User <span class="keyword">from</span> <span class="string">&#x27;../views/User&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 路由懒加载</span></span><br><span class="line"><span class="keyword">const</span> Home = <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../views/Home&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> User = <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../views/User&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> About = <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;../views/About&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>当我们使用路由懒加载后，打包后的js代码中就会生成对应的代码块</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/03/%E4%B8%89-vueRouter/" data-id="ckpg8fp3q0005xc1n03pa1orm" data-title="三.vueRouter" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/03/%E4%B8%89-vueRouter/" data-id="ckpgw4wb70006901nfwkw6pjs" data-title="三.vueRouter" class="article-share-link">分享</a>
       
       
       
@@ -140,6 +145,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2021/06/03/%E5%9B%9B-vue%E8%B7%AF%E7%94%B1%E5%B5%8C%E5%A5%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          四.vue路由嵌套
+        
+      </div>
+    </a>
   
   
     <a href="/2021/06/03/%E4%BA%8C-vueRouter/" id="article-nav-older" class="article-nav-link-wrap">
@@ -194,6 +208,14 @@
       <ul>
         
           <li>
+            <a href="/2021/06/03/%E4%BA%94-vueRouter%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/">五.vueRouter数据传递</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/03/%E5%9B%9B-vue%E8%B7%AF%E7%94%B1%E5%B5%8C%E5%A5%97/">四.vue路由嵌套</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/03/%E4%B8%89-vueRouter/">三.vueRouter</a>
           </li>
         
@@ -203,10 +225,6 @@
         
           <li>
             <a href="/2021/06/03/%E4%B8%80-vueRouter/">一.vueRouter</a>
-          </li>
-        
-          <li>
-            <a href="/2021/06/02/01-vue%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">01-vue的安装与配置</a>
           </li>
         
       </ul>
