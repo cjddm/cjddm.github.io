@@ -106,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/03/%E4%BA%94-vueRouter%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/" data-id="ckph04jng0005601n711cgdgt" data-title="五.vueRouter数据传递" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/03/%E4%BA%94-vueRouter%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/" data-id="ckph088tu0006tc1nddp4dapc" data-title="五.vueRouter数据传递" class="article-share-link">分享</a>
       
       
       
@@ -146,24 +146,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <span id="more"></span>
-
-<h3 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h3><h5 id="1-理解："><a href="#1-理解：" class="headerlink" title="1.理解："></a>1.理解：</h5><p>字面意思，路由嵌套路由，例如在淘宝网页的主页中，当我们点击一个商品分类时，主页的中间内容部分会发生变化，这就是嵌套路由</p>
-<h5 id="2-步骤："><a href="#2-步骤：" class="headerlink" title="2.步骤："></a>2.步骤：</h5><p>实现嵌套路由有两个步骤</p>
-<h6 id="1-创建对应的子组件，并且在路由映射中配置对应的子路由"><a href="#1-创建对应的子组件，并且在路由映射中配置对应的子路由" class="headerlink" title="1.创建对应的子组件，并且在路由映射中配置对应的子路由"></a>1.创建对应的子组件，并且在路由映射中配置对应的子路由</h6><p>创建子组件就不写了，vue后缀文件</p>
-<p>引入创建的子组件时也要采取懒加载的方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/home&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: Home,</span><br><span class="line">    <span class="attr">children</span>: [</span><br><span class="line">    <span class="comment">//先配置一个默认的路由</span></span><br><span class="line">    <span class="comment">//这里的默认路由的path里是空的，与它的上一级路由不同</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">        <span class="attr">redirect</span>: <span class="string">&#x27;homenews&#x27;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">     <span class="comment">//嵌套路由在配置时 path路径前面不需要加斜杠，切记</span></span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;homenews&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: HomeNews</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&#x27;homemessage&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: HomeMessage</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="2-在组件内部使用标签"><a href="#2-在组件内部使用标签" class="headerlink" title="2.在组件内部使用标签"></a>2.在组件内部使用<router-view>标签</h6><p>接着我们在需要引入子组件的组件内部使用<router-view>和<router-link>将子组件显示出来</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h2&gt;不管你信不信，我就是主页&lt;/h2&gt;</span><br><span class="line">    &lt;!--注意，这里的router-link中的to后面的路径比主路由多了一点东西--&gt;</span><br><span class="line">    &lt;router-link to=&quot;/home/homemessage&quot;&gt;消息&lt;/router-link&gt;</span><br><span class="line">    &lt;router-link to=&quot;/home/homenews&quot;&gt;新闻&lt;/router-link&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-
-
+        <p> 嵌套路由的两个步骤</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/06/03/%E5%9B%9B-vue%E8%B7%AF%E7%94%B1%E5%B5%8C%E5%A5%97/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/03/%E5%9B%9B-vue%E8%B7%AF%E7%94%B1%E5%B5%8C%E5%A5%97/" data-id="ckph04jnr000m601n72bq7nr0" data-title="四.vue嵌套路由" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/03/%E5%9B%9B-vue%E8%B7%AF%E7%94%B1%E5%B5%8C%E5%A5%97/" data-id="ckph088u3000mtc1n47pe3v3k" data-title="四.vue嵌套路由" class="article-share-link">分享</a>
       
       
       
@@ -213,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/03/%E4%B8%89-vueRouter/" data-id="ckph04jnh0006601naurq88oh" data-title="三.vueRouter" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/03/%E4%B8%89-vueRouter/" data-id="ckph088tt0005tc1n1cdsb24l" data-title="三.vueRouter" class="article-share-link">分享</a>
       
       
       
@@ -262,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/03/%E4%BA%8C-vueRouter/" data-id="ckph04jni0007601n0gci9tkw" data-title="二.vueRouter" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/03/%E4%BA%8C-vueRouter/" data-id="ckph088tv0007tc1nbcxnflna" data-title="二.vueRouter" class="article-share-link">分享</a>
       
       
       
@@ -311,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/03/%E4%B8%80-vueRouter/" data-id="ckph04jnd0002601nelxs2h50" data-title="一.vueRouter" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/03/%E4%B8%80-vueRouter/" data-id="ckph088tp0002tc1n4fmn79ee" data-title="一.vueRouter" class="article-share-link">分享</a>
       
       
       
@@ -360,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/06/02/01-vue%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-id="ckph04jna0001601n79o3g4ue" data-title="01-vue的安装与配置" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2021/06/02/01-vue%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" data-id="ckph088tm0001tc1n6wk7hg17" data-title="01-vue的安装与配置" class="article-share-link">分享</a>
       
       
       
